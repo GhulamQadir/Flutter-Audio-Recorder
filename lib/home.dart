@@ -126,56 +126,76 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   Widget buildTimer() {
     final animate = recorder.isRecording;
+    final animate1 = player.isPlaying;
     final text = recorder.isRecording ? "Now Recording" : "Press Start";
-    return AvatarGlow(
-      glowColor: Colors.white,
-      endRadius: 150,
-      animate: animate,
-      duration: Duration(milliseconds: 2000),
-      repeat: true,
-      showTwoGlows: true,
-      repeatPauseDuration: Duration(milliseconds: 100),
-      child: Material(
-        shape: CircleBorder(),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 5),
-            shape: BoxShape.circle,
-          ),
-          child: CircleAvatar(
-              backgroundColor: Colors.blue[700],
-              radius: 120,
-              child: player.isPlaying
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.audiotrack_sharp,
-                          size: 80,
-                          color: Colors.white,
-                        )
-                      ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.mic,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                        TimerWidget(controller: timerController),
-                        Text(
-                          text,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    )),
-        ),
-      ),
-    );
+    return player.isPlaying
+        ? AvatarGlow(
+            glowColor: Colors.white,
+            endRadius: 150,
+            animate: animate1,
+            duration: Duration(milliseconds: 2000),
+            repeat: true,
+            showTwoGlows: true,
+            repeatPauseDuration: Duration(milliseconds: 100),
+            child: Material(
+              shape: CircleBorder(),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white, width: 5),
+                  shape: BoxShape.circle,
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.blue[700],
+                  radius: 120,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.audiotrack_sharp,
+                        size: 80,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
+        : AvatarGlow(
+            glowColor: Colors.white,
+            endRadius: 150,
+            animate: animate,
+            duration: Duration(milliseconds: 2000),
+            repeat: true,
+            showTwoGlows: true,
+            repeatPauseDuration: Duration(milliseconds: 100),
+            child: Material(
+                shape: CircleBorder(),
+                child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 5),
+                      shape: BoxShape.circle,
+                    ),
+                    child: CircleAvatar(
+                        backgroundColor: Colors.blue[700],
+                        radius: 120,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.mic,
+                              size: 30,
+                              color: Colors.white,
+                            ),
+                            TimerWidget(controller: timerController),
+                            Text(
+                              text,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        )))));
   }
 }
