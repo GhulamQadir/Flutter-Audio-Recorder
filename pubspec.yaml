@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   # flutter_sound: ^9.1.9
   flutter_sound_lite: ^8.5.0
+  avatar_glow: ^2.0.2
   permission_handler: ^8.1.2
 
 dev_dependencies:
@@ -61,9 +62,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/recorder.json
+    # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

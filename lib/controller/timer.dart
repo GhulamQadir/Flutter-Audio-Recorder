@@ -90,20 +90,14 @@ class _TimerWidgetState extends State<TimerWidget> {
     String twoDigits(int n) => n.toString().padLeft(2, '0');
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
-    final hours = twoDigits(duration.inHours.remainder(24));
+    // final hours = twoDigits(duration.inHours.remainder(24));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        buildTimeCard(time: minutes, header: "Minutes"),
-        SizedBox(
-          width: 8,
-        ),
+        buildTimeCard(time: "${minutes} : ", header: "Minutes"),
         buildTimeCard(time: seconds, header: "Seconds"),
-        SizedBox(
-          width: 8,
-        ),
-        buildTimeCard(time: hours, header: "Hours"),
+        // buildTimeCard(time: hours, header: "Hours"),
       ],
     );
   }
@@ -111,21 +105,16 @@ class _TimerWidgetState extends State<TimerWidget> {
   Widget buildTimeCard({required String time, required String header}) {
     return Column(
       children: [
-        Container(
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(8)),
-            child: Text(
-              time,
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            )),
         Text(
-          header,
-          style: TextStyle(color: Colors.white),
-        ),
+          time,
+          style: TextStyle(
+              fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+        )
+        // ),
+        // Text(
+        //   header,
+        //   style: TextStyle(color: Colors.white),
+        // ),
       ],
     );
   }
